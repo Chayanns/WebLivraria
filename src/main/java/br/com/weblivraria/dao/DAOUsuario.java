@@ -17,7 +17,7 @@ public class DAOUsuario extends Conexao implements CRUDUsuario<Usuario>{
 			//Vericar se a conexão com o banco de dados foi aberta ou não,
 			// caso tenha sido aberta iremos executar os comandos de sql
 			//para cadastrar o usuário. Senão, iremos exibir uma mensagem
-			//para o usuário de que não foi poss´vel estabelcer comunicação
+			//para o usuário de que não foi possível estabelcer comunicação
 			//com o banco de dados.
 		if(abrirConexao()) {
 			String sql = "insert into usuario(nomeusuario,senha,email,telefone,nomecompleto,cpf) values (?,?,?,?,?,?)";

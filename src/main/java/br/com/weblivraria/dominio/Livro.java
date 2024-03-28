@@ -6,7 +6,7 @@ public class Livro {
 	private String genero;
 	private String sinopse;
 	private String autor;
-	private String preco;
+	private Double preco;
 	private String capa;
 	
 	public Integer getIdlivro() {
@@ -39,10 +39,10 @@ public class Livro {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
-	public String getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
-	public void setPreco(String preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 	public String getCapa() {
