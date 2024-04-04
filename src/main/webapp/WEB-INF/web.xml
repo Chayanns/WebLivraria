@@ -9,5 +9,34 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  
+  <servlet>
+    <description></description>
+    <display-name>ServiceUsuario</display-name>
+    <servlet-name>ServiceUsuario</servlet-name>
+    <servlet-class>br.com.weblivraria.services.ServiceUsuario</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServiceUsuario</servlet-name>
+    <url-pattern>/ServiceUsuario</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServiceLogin</display-name>
+    <servlet-name>ServiceLogin</servlet-name>
+    <servlet-class>br.com.weblivraria.services.ServiceLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServiceLogin</servlet-name>
+    <url-pattern>/ServiceLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Home</display-name>
+    <servlet-name>Home</servlet-name>
+    <servlet-class>br.com.weblivraria.pages.Home</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Home</servlet-name>
+    <url-pattern>/Home</url-pattern>
+  </servlet-mapping>
 </web-app>

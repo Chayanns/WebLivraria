@@ -87,13 +87,13 @@ public class DAOUsuario extends Conexao implements CRUDUsuario<Usuario>{
 				
 				while(rs.next()) {
 					Usuario us = new Usuario();
-					us.setIdusuario(rs.getInt(0));
-					us.setNomeusuario(rs.getString(1));
-					us.setSenha(rs.getString(2));
-					us.setEmail(rs.getString(3));
-					us.setTelefone(rs.getString(4));
-					us.setNomecompleto(rs.getString(5));
+					us.setIdusuario(rs.getInt(1));
+					us.setNomeusuario(rs.getString(2));
+					us.setSenha(rs.getString(3));
+					us.setEmail(rs.getString(4));
+					us.setTelefone(rs.getString(5));
 					us.setNomecompleto(rs.getString(6));
+					
 					
 					lista.add(us);
 				}
@@ -138,13 +138,13 @@ public class DAOUsuario extends Conexao implements CRUDUsuario<Usuario>{
 				
 				if(rs.next()) {
 					
-					us.setIdusuario(rs.getInt(0));
-					us.setNomeusuario(rs.getString(1));
-					us.setSenha(rs.getString(2));
-					us.setEmail(rs.getString(3));
-					us.setTelefone(rs.getString(4));
-					us.setNomecompleto(rs.getString(5));
+					us.setIdusuario(rs.getInt(1));
+					us.setNomeusuario(rs.getString(2));
+					us.setSenha(rs.getString(3));
+					us.setEmail(rs.getString(4));
+					us.setTelefone(rs.getString(5));
 					us.setNomecompleto(rs.getString(6));
+					us.setCpf(rs.getString(7));
 					
 					
 				}
@@ -195,7 +195,7 @@ public class DAOUsuario extends Conexao implements CRUDUsuario<Usuario>{
 			//Executar a consulta e verificar se o retorno da execução 
 			//é maior que 0(zero)
 			if(pst.executeUpdate()> 0) {
-				msg = "Atualização realizado";
+				msg = "Atualização realizada";
 			}
 			else {
 				msg = "Não foi possível atualização";
