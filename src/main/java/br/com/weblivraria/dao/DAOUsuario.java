@@ -273,7 +273,7 @@ public class DAOUsuario extends Conexao implements CRUDUsuario<Usuario>{
 		
 		try {
 			if(abrirConexao()) {
-				String sql = "Select nomeusuario,senha,enail,cpf from usuario where nomeusuario=? or email=? or cpf=? and senha=? "; //lov u <3
+				String sql = "Select nomeusuario,senha,email,cpf from usuario where nomeusuario=? or email=? or cpf=? and senha=? "; //lov u <3
 				//Vamos preparar a consultar para ser executada
 				pst = con.prepareStatement(sql);
 				

@@ -3,7 +3,7 @@ package br.com.weblivraria.dominio;
 public class DetalhePedido {
 	private Integer iddetalhepedido;
 	private Integer idpedido;
-	private Integer livro;
+	private Integer idlivro;
 	private Integer quantidade;
 	private Double precototal;
 	
@@ -19,11 +19,11 @@ public class DetalhePedido {
 	public void setIdpedido(Integer idpedido) {
 		this.idpedido = idpedido;
 	}
-	public Integer getLivro() {
-		return livro;
+	public Integer getIdLivro() {
+		return idlivro;
 	}
-	public void setLivro(Integer livro) {
-		this.livro = livro;
+	public void setIdLivro(Integer livro) {
+		this.idlivro = livro;
 	}
 	public Integer getQuantidade() {
 		return quantidade;

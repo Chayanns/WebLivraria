@@ -49,4 +49,34 @@
     <servlet-name>ServiceLivro</servlet-name>
     <url-pattern>/ServiceLivro</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ser</display-name>
+    <servlet-name>ser</servlet-name>
+    <servlet-class>br.com.weblivraria.services.ser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ser</servlet-name>
+    <url-pattern>/ser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServicePagamento</display-name>
+    <servlet-name>ServicePagamento</servlet-name>
+    <servlet-class>br.com.weblivraria.services.ServicePagamento</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServicePagamento</servlet-name>
+    <url-pattern>/ServicePagamento</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServiceFinalizar</display-name>
+    <servlet-name>ServiceFinalizar</servlet-name>
+    <servlet-class>br.com.weblivraria.services.ServiceFinalizar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServiceFinalizar</servlet-name>
+    <url-pattern>/ServiceFinalizar</url-pattern>
+  </servlet-mapping>
 </web-app>

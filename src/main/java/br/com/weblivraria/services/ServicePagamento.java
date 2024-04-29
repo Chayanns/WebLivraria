@@ -1,24 +1,25 @@
 package br.com.weblivraria.services;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import br.com.weblivraria.dao.DAOLivro;
 import br.com.weblivraria.dominio.Livro;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ServiceLivro
+ * Servlet implementation class ServicePagamento
  */
-public class ServiceLivro extends HttpServlet {
+public class ServicePagamento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServiceLivro() {
+    public ServicePagamento() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,6 +28,7 @@ public class ServiceLivro extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String pagina = "<!DOCTYPE html>\r\n"
 				+ "<html lang=\"pt-br\">\r\n"
 				+ "<head>\r\n"
@@ -152,74 +154,58 @@ public class ServiceLivro extends HttpServlet {
 				+ "            padding: 20px;\r\n"
 				+ "            border-top: 1px solid silver;\r\n"
 				+ "        }\r\n"
-				+ "        #listalivros{\r\n"
-				+ "            display: block;\r\n"
-				+ "            flex-wrap: wrap;\r\n"
-				+ "            width: 90%;\r\n"
-				+ "            margin-left: auto;\r\n"
-				+ "            margin-right: auto;\r\n"
-				+ "            justify-content: center;\r\n"
-				+ "        }\r\n"
-				+ "        .livro{\r\n"
-				+ "            width: 10%;\r\n"
-				+ "            border: 1px solid #eee;\r\n"
-				+ "            padding: 50px;\r\n"
-				+ " \r\n"
-				+ "        }\r\n"
-				+ "        .livro img{\r\n"
-				+ "            width: 100%;\r\n"
-				+ "        }\r\n"
-				+ "        .livro h4{\r\n"
-				+ "            font-family: verdana;\r\n"
-				+ "            font-size: 14pt;\r\n"
-				+ "        }\r\n"
-				+ "        .livro p{\r\n"
-				+ "            font-family: verdana;\r\n"
-				+ "            color: red;\r\n"
-				+ "            font-size: 15pt;\r\n"
-				+ "        }\r\n"
-				+ " .detalhe{\r\n"
-				+ "    display: flex;\r\n"
-				+ "    width: 1000px;\r\n"
-				+ "    margin-left: auto;\r\n"
-				+ "    margin-right: auto; margin-bottom:20px;\r\n"
-				+ "}\r\n"
-				+ ".detalhe img{\r\n"
-				+ "    width: 500px;\r\n"
-				+ "    height: 500px;   \r\n"
-				+ "}\r\n"
-				+ ".detalhe .item{\r\n"
-				+ "    padding: 20px;    \r\n"
-				+ "}\r\n"
-				+ ".detalhe .item h4{\r\n"
-				+ "    font-family: Verdana;\r\n"
-				+ "    font-size: 20pt;    \r\n"
-				+ "}\r\n"
-				+ ".detalhe .item h5{\r\n"
-				+ "    margin: 0px;\r\n"
-				+ "    font-family: Verdana;\r\n"
-				+ "    font-size: 10pt;\r\n"
-				+ "}\r\n"
-				+ ".detalhe .item .sinopse{\r\n"
-				+ "    font-family: Verdana;\r\n"
-				+ "    font-size: 11pt;\r\n"
-				+ "    line-height: 25px;\r\n"
+				+ ".pagamento{"
+				+ "display:flex;"
+				+ "margin:30px;"
+				+ "padding:20px;"
+				+ "border:1px solid #ddd;"
+				+ "justify-content:space-between;"
+				+ "align-items:center;"
+				+ "font-family:Verdana;"
+				+ "font-size:10pt;"
 				+ "}"
-				+ ".detalhe .preco{\r\n"
-				+ "    font-family: Verdana;\r\n"
-				+ "    font-size: 20pt;\r\n"
-				+ "    font-weight: bold;\r\n"
-				+ "    color: red;\r\n"
+				+ ".pagamento img{"
+				+ "width:80px;"
+				+ "height:110px;"
+				+ "margin:10px;"
 				+ "}"
-				+ ".pag{"
-				+ "background-color:red;"
+				+ ".pagamento label{"
+				+ "margin-right:20px;"
+				+ "font-wight:bold;"
+				+ "}"
+				+ ".pagamento input[type=number]{"
+				+ "margin-right:30px;"
+				+ "}"
+				+ ".pagamento button{"
+				+ "background:#ff0000;"
 				+ "color:white;"
-				+ "padding:15px;"
+				+ "border:0px;"
+				+ "padding:10px;"
+				+ "}"
+				+ ".pagamento .pag{"
 				+ "text-decoration:none;"
-				+ "font-family:Verdana;"	
-				+ "font-wight:bold;}"
+				+ "background-color:limegreen;"
+				+ "color:white;"
+				+ "padding:10px;"
+				+ "font-weight:bold;"
+				+ "font-size:12pt;"
+				+ "text-transform:uppercase;"
+				+ "}"
 				+ "</style>\r\n"
 				+ "\r\n"
+				+ "<script>\r\n"
+				+ "        function subtotal(){\r\n"
+				+ "        var preco = document.getElementById(\"preco\").innerText;\r\n"
+				+ "        var qtd = document.getElementById(\"qtd\").value;\r\n"
+				+ "        document.getElementById(\"resultado\").innerText=preco*qtd;\r\n"
+				+ "        }\r\n"
+				+ " function redirecionar(){"
+				+ "document.location.href=\"ServiceFinalizar?idlivro="
+				+request.getParameter("id")
+				+"&qtd=\"+document.getElementById('qtd').value+\"&subtotal=\""
+				+"+document.getElementById('resultado').innerText;"
+				+"}"
+				+ "</script>"
 				+ "</head>\r\n"
 				+ "<body>\r\n"
 				+ "    <header>\r\n"
@@ -276,14 +262,14 @@ public class ServiceLivro extends HttpServlet {
 				
 				liv = dlivro.pesquisar(liv);
 				
-			    conteudo+= " <div class=\"detalhe\">\r\n"
-				+ "                    <img src="+liv.getCapa()+" alt=\"\">\r\n"
-				+ "                    <div class=item> <h4>"+liv.getTitulo()+"</h4>\r\n"
-				+ "                    <h5>"+liv.getAutor()+"</h5>\r\n"
-				+ "                    <h5>"+liv.getGenero()+"</h5>\r\n"	
-				+ "                    <p class=sinopse>"+liv.getSinopse()+"</p>\r\n"
-				+ "                    <p class=\"preco\"> R$ "+liv.getPreco()+"</p> "
-				+ "					<a href=ServicePagamento?id="+liv.getIdlivro()+" class=pag>Ir para pagamento</a></div>\r\n"
+			    conteudo+= " <div class=\"pagamento\">\r\n"
+			    		
+				+ "                    <img src="+liv.getCapa()+"><h4>"+liv.getTitulo()+"</h4>\r\n"
+				+ "                    <p class=\"preco\"> R$ <label id=preco>"+liv.getPreco()+"</label> "
+						+ "Qtde:<input type=number value=1 max=5 min=1 id=qtd>"
+						+ "Subtotal:R$ <label id=resultado>"+liv.getPreco()+"</label>"
+						+ "<button id=calc onclick=subtotal()>Calcular</button></p>"
+				+ "					<a href=javascript:void onclick = redirecionar() class=pag> Finalizar pagamento</a></div>\r\n"
 				+ "                    </div>  \r\n"
 					;	
 					
@@ -327,39 +313,15 @@ public class ServiceLivro extends HttpServlet {
 				+ "</html>";
 				
 				response.getWriter().append(pagina);
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String titulo = request.getParameter("txtTitulo");
-		String genero = request.getParameter("cboGenero");
-		String sinopse = request.getParameter("txtSinopse");
-		String autor = request.getParameter("txtAutor");
-		String preco = request.getParameter("txtPreco");
-		String capa = request.getParameter("txtCapa");
-		
-		response.getWriter().append(titulo+" - "+genero);
-		//instância da classe livro
-		Livro lv = new Livro();
-		//passando os dados para o objeto
-		lv.setTitulo(titulo);
-		lv.setGenero(genero);
-		lv.setSinopse(sinopse);
-		lv.setAutor(autor);
-		lv.setPreco(Double.parseDouble(preco));
-		lv.setCapa(capa);
-		//instância da camada dao para efetuar o cadastro do livro
-		DAOLivro dv = new DAOLivro();
-		
-		String msg=dv.Cadastrar(lv);
-		if(msg.equals("Cadastro realizado")){
-			response.sendRedirect("confirmacao.html");
-		}
-		else {
-			response.getWriter().append(msg);
-		}
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
